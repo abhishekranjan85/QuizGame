@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/quiz-play.css">
+</head>
+<body>
+
+  <!-- ══ QUIZ SCREEN ══ -->
+  <div id="quizScreen">
+
+    <header class="topbar">
+      <div class="hud-cell">
+        <span class="hud-label">QUESTION</span>
+        <span class="hud-val" id="questionCounter">1 / 20</span>
+      </div>
+
+      <div class="timer-cell">
+        <div class="timer-ring">
+          <svg viewBox="0 0 80 80">
+            <circle class="ring-bg"  cx="40" cy="40" r="33"/>
+            <circle class="ring-arc" id="timerArc" cx="40" cy="40" r="33"
+              stroke-dasharray="207.3" stroke-dashoffset="0"/>
+          </svg>
+          <span class="ring-time" id="timerLabel">10:00</span>
+        </div>
+      </div>
+
+      <div class="hud-cell right">
+        <span class="hud-label">SCORE</span>
+        <span class="hud-val accent" id="liveScore">0</span>
+      </div>
+    </header>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <main class="quiz-body">
+      <div class="domain-tag" id="domainTag">CLIMATE</div>
+
+      <div class="question-box">
+        <span class="q-num" id="qNum">Q1</span>
+        <p class="q-text" id="questionText">Loading…</p>
+      </div>
+
+      <div class="options-grid" id="optionsGrid">
+        <!-- 4 buttons injected by JS -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ══ RESULT SCREEN ══ -->
+  <div id="resultScreen" class="hidden">
+
+    <div class="result-hero">
+      <div class="result-emoji" id="resultEmoji">🏆</div>
+      <h1 class="result-title">Quiz Complete!</h1>
+      <p class="result-sub" id="resultMsg">—</p>
+      <div class="result-score">
+        <span class="rs-num" id="finalScore">0</span>
+        <span class="rs-sep">/</span>
+        <span class="rs-tot" id="finalTotal">20</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item s-green">
+        <span class="si-num" id="statCorrect">0</span>
+        <span class="si-lbl">Correct</span>
+      </div>
+      <div class="stat-item s-red">
+        <span class="si-num" id="statWrong">0</span>
+        <span class="si-lbl">Wrong</span>
+      </div>
+      <div class="stat-item s-grey">
+        <span class="si-num" id="statSkipped">0</span>
+        <span class="si-lbl">Skipped</span>
+      </div>
+      <div class="stat-item s-blue">
+        <span class="si-num" id="statAccuracy">0%</span>
+        <span class="si-lbl">Accuracy</span>
+      </div>
+    </div>
+
+    <div class="result-btns">
+      <button class="rbtn rbtn-primary" onclick="goDashboard()">🏠 Go to Dashboard</button>
+      <button class="rbtn rbtn-outline" onclick="restartQuiz()">🔄 Try Again</button>
+    </div>
+
+    <div class="review-section">
+      <h2 class="review-title">Answer Review</h2>
+      <div class="review-list" id="reviewList"></div>
+    </div>
+
+  </div>
+
+  <script src="js/quiz-play.js"></script>
+</body>
+</html>

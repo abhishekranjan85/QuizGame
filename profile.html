@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Profile</title>
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<a href="dashboard.html" class="back-btn">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+
+<div class="profile-container">
+
+  <div class="profile-header">
+    <div class="avatar">
+      <i class="fas fa-user"></i>
+    </div>
+    <h2 id="username">Username</h2>
+    <p id="rank">Rank #0 • Level 1</p>
+  </div>
+
+  <div class="profile-stats">
+    <div class="stat"><span id="score">0</span><small>Score</small></div>
+    <div class="stat"><span id="streak">0</span><small>Day Streak</small></div>
+    <div class="stat"><span id="carbon">-2px</span><small>Future Enhancement</small></div>
+    <div class="stat"><span id="certs">0</span><small>Certificates</small></div>
+  </div>
+
+  <div class="section">
+    <h3>Badges</h3>
+    <div id="badges" class="badge-box"></div>
+  </div>
+
+  <div class="section">
+    <h3>Certificates</h3>
+    <ul id="certList"></ul>
+  </div>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+<div class="loading" id="loading">
+  <div class="loading-spinner"></div>
+</div>
+
+<script src="js/profile.js"></script>
+</body>
+</html>

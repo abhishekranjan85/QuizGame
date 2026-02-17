@@ -1,0 +1,359 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
+}
+
+/* Header styles */
+h2 {
+    color: white;
+    font-size: 3.5rem;
+    margin-bottom: 60px;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    letter-spacing: 1px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ffde59, transparent);
+    border-radius: 2px;
+}
+
+/* Button container */
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Button grid layout */
+body > button {
+    display: none; /* Hide direct buttons, we'll use grid */
+}
+
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+}
+
+/* Button styles */
+.quiz-button {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 35px 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.quiz-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1), transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.quiz-button:hover::before {
+    transform: translateX(100%);
+}
+
+.quiz-button:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 3px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.quiz-button:active {
+    transform: translateY(-5px) scale(1.02);
+    transition: transform 0.1s;
+}
+
+/* Individual button colors */
+.quiz-button[data-tech="html"] {
+    background: linear-gradient(145deg, #e34c26cc, #e34c2699);
+    border-color: #e34c26;
+}
+
+.quiz-button[data-tech="css"] {
+    background: linear-gradient(145deg, #264de4cc, #264de499);
+    border-color: #264de4;
+}
+
+.quiz-button[data-tech="js"] {
+    background: linear-gradient(145deg, #f0db4fcc, #f0db4f99);
+    border-color: #f0db4f;
+    color: #323330;
+}
+
+.quiz-button[data-tech="python"] {
+    background: linear-gradient(145deg, #306998cc, #30699899);
+    border-color: #306998;
+}
+
+.quiz-button[data-tech="java"] {
+    background: linear-gradient(145deg, #007396cc, #00739699);
+    border-color: #007396;
+}
+
+.quiz-button[data-tech="react"] {
+    background: linear-gradient(145deg, #00599ccc, #00599c99);
+    border-color: #00599c;
+}
+
+/* Tech icons */
+.quiz-button::after {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    position: absolute;
+    right: 25px;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.quiz-button[data-tech="html"]::after {
+    content: '</>';
+}
+
+.quiz-button[data-tech="css"]::after {
+    content: '{ }';
+}
+
+.quiz-button[data-tech="js"]::after {
+    content: 'JS';
+    font-weight: bold;
+}
+
+.quiz-button[data-tech="python"]::after {
+    content: '🐍';
+    font-size: 2rem;
+}
+
+.quiz-button[data-tech="java"]::after {
+    content: '☕';
+    font-size: 2rem;
+}
+
+.quiz-button[data-tech="react"]::after {
+    content: 'C++';
+    font-weight: bold;
+}
+
+.quiz-button:hover::after {
+    opacity: 0.6;
+}
+
+/* Counter animation */
+.quiz-button span {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Back button (you might want to add this) */
+.back-button {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-5px);
+}
+
+/* Loading animation for buttons */
+@keyframes buttonEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.quiz-button {
+    animation: buttonEntrance 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+.quiz-button:nth-child(1) { animation-delay: 0.1s; }
+.quiz-button:nth-child(2) { animation-delay: 0.2s; }
+.quiz-button:nth-child(3) { animation-delay: 0.3s; }
+.quiz-button:nth-child(4) { animation-delay: 0.4s; }
+.quiz-button:nth-child(5) { animation-delay: 0.5s; }
+.quiz-button:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .quiz-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .quiz-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        gap: 20px;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+    
+    .quiz-button {
+        padding: 30px 20px;
+        font-size: 1.6rem;
+        min-height: 130px;
+    }
+    
+    .quiz-button::after {
+        font-size: 2rem;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .quiz-button {
+        padding: 25px 15px;
+        font-size: 1.4rem;
+        min-height: 110px;
+    }
+    
+    .back-button {
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .quiz-button::after {
+        font-size: 1.8rem;
+        right: 15px;
+    }
+}
+
+/* Add some particles for visual interest */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+        radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05) 3px, transparent 3px),
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 300px 300px, 250px 250px, 400px 400px, 350px 350px, 200px 200px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Selection animation */
+.quiz-button.selected {
+    animation: selectPulse 0.5s ease-in-out;
+}
+
+@keyframes selectPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}

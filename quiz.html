@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/quiz-play.css">
+</head>
+<body>
+
+  <!-- HUD Bar -->
+  <div class="hud">
+    <div class="hud-item">
+      <span class="hud-label">QUESTION</span>
+      <span class="hud-value" id="questionCounter">1 / 20</span>
+    </div>
+    <div class="hud-item center">
+      <span class="hud-label">DOMAIN</span>
+      <span class="hud-value domain-badge" id="domainLabel">—</span>
+    </div>
+    <div class="hud-item right">
+      <span class="hud-label">SCORE</span>
+      <span class="hud-value score-live" id="liveScore">0</span>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- Quiz Card -->
+  <div class="quiz-wrap" id="quizWrap">
+
+    <!-- Timer Ring -->
+    <div class="timer-ring-wrap">
+      <svg class="timer-svg" viewBox="0 0 120 120">
+        <circle class="timer-bg" cx="60" cy="60" r="52"/>
+        <circle class="timer-arc" id="timerArc" cx="60" cy="60" r="52"
+          stroke-dasharray="326.7" stroke-dashoffset="0"/>
+      </svg>
+      <div class="timer-text" id="timerText">30</div>
+    </div>
+
+    <!-- Question -->
+    <div class="question-card" id="questionCard">
+      <p class="question-text" id="question">Loading...</p>
+    </div>
+
+    <!-- Options -->
+    <div class="options-grid" id="options"></div>
+  </div>
+
+  <!-- Result Screen -->
+  <div class="result-screen" id="result" style="display:none">
+    <div class="result-hero">
+      <div class="result-emoji" id="resultEmoji">🌍</div>
+      <h1 class="result-title">Quiz Complete!</h1>
+      <div class="result-score-wrap">
+        <span class="result-score" id="finalScore">0</span>
+        <span class="result-total" id="finalTotal">/ 20</span>
+      </div>
+      <p class="result-message" id="resultMessage">Great job!</p>
+    </div>
+
+    <div class="result-stats">
+      <div class="stat-box">
+        <span class="stat-num" id="statCorrect">0</span>
+        <span class="stat-label">Correct</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" id="statWrong">0</span>
+        <span class="stat-label">Wrong</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" id="statSkipped">0</span>
+        <span class="stat-label">Skipped</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" id="statPct">0%</span>
+        <span class="stat-label">Accuracy</span>
+      </div>
+    </div>
+
+    <!-- Answer Review -->
+    <div class="review-section">
+      <h2 class="review-title">Answer Review</h2>
+      <div class="review-list" id="reviewList"></div>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn-primary" onclick="goDashboard()">🏠 Dashboard</button>
+      <button class="btn-secondary" onclick="restartQuiz()">🔄 Retry</button>
+    </div>
+  </div>
+
+  <script src="js/quiz-play.js"></script>
+</body>
+</html>
